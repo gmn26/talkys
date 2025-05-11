@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:talkys/component/home_greeting.dart';
-import 'package:talkys/component/popup_modal.dart';
+import 'package:talkys/component/main_feat/home_greeting.dart';
+import 'package:talkys/component/main_feat/popup_modal.dart';
 import 'package:talkys/controller/feature_menu.dart';
 import 'package:get/get.dart';
 
@@ -25,6 +25,12 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   HomeGreetingComponent(),
+                  TextButton(
+                    onPressed: () {
+                      Get.offAllNamed("/main-menu");
+                    },
+                    child: Text("Kembali ke halaman Utama"),
+                  ),
                   GestureDetector(
                     onTap: () {
                       _showCustomDialog(context);
@@ -46,17 +52,24 @@ class HomePage extends StatelessWidget {
                             ),
                             child: Column(
                               children: [
-                                Icon(Icons.arrow_upward, color: Colors.white, size: 32.0),
+                                Icon(
+                                  Icons.arrow_upward,
+                                  color: Colors.white,
+                                  size: 32.0,
+                                ),
                                 SizedBox(height: 8),
                                 Text(
                                   "Kamu mau apa?",
-                                  style: TextStyle(fontSize: 32.0, color: Colors.white),
+                                  style: TextStyle(
+                                    fontSize: 32.0,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ),
                   ),
                 ],

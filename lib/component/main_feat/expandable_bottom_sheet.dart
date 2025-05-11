@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:talkys/component/feat_menu_kebutuhan.dart';
-import 'package:talkys/component/feat_menu_suasana_hati.dart';
+import 'package:talkys/component/main_feat/feat_menu_kebutuhan.dart';
+import 'package:talkys/component/main_feat/feat_menu_suasana_hati.dart';
 import 'package:talkys/controller/feature_menu.dart';
 
-class ExpandableBottomSheetComponent extends StatelessWidget {
+class MainExpandableBottomSheetComponent extends StatelessWidget {
   final String selectedMenu;
   final FeatureMenuController menuController = Get.put(FeatureMenuController());
 
-  ExpandableBottomSheetComponent({super.key, required this.selectedMenu});
+  MainExpandableBottomSheetComponent({super.key, required this.selectedMenu});
 
   @override
   Widget build(BuildContext context) {

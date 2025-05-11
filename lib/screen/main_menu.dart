@@ -68,10 +68,25 @@ class MainMenuPage extends StatelessWidget {
                     ),
                     child: Text("Petunjuk"),
                   ),
+                ),FractionallySizedBox(
+                  widthFactor: 1 / 3,
+                  alignment: Alignment.center,
+                  child: TextButton(
+                    onPressed: () {
+                      Get.toNamed("/speaking-training");
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.blueAccent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text("Latihan"),
+                  ),
                 ),
               ],
             ),
-
           ),
         ],
       ),

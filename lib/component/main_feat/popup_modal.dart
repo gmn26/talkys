@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:talkys/component/expandable_bottom_sheet.dart';
+import 'package:talkys/component/main_feat/expandable_bottom_sheet.dart';
 import 'package:talkys/controller/feature_menu.dart';
 import 'package:get/get.dart';
 
@@ -28,25 +28,33 @@ class PopupModalComponent extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                GestureDetector(
-                  onTap: () {
+                TextButton(
+                  onPressed: () {
                     menuController.changeMenu("kebutuhan");
                     _showBottomSheet(context, "kebutuhan");
                   },
-                  child: Text(
-                    "Kebutuhan",
-                    style: TextStyle(fontSize: 24.0, color: Colors.white),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
+                  child: const Text("Kebutuhan"),
                 ),
-                GestureDetector(
-                  onTap: () {
+                TextButton(
+                  onPressed: () {
                     menuController.changeMenu("suasana_hati");
                     _showBottomSheet(context, "suasana_hati");
                   },
-                  child: Text(
-                    "Suasana Hati",
-                    style: TextStyle(fontSize: 24.0, color: Colors.white),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
+                  child: const Text("Suasana Hati"),
                 ),
               ],
             ),
@@ -61,7 +69,9 @@ class PopupModalComponent extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => ExpandableBottomSheetComponent(selectedMenu: selectedMenu),
+      builder:
+          (context) =>
+              MainExpandableBottomSheetComponent(selectedMenu: selectedMenu),
     );
   }
 }

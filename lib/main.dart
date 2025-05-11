@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:talkys/screen/app_guide.dart';
 import 'package:talkys/screen/home.dart';
 import 'package:talkys/screen/main_menu.dart';
-import 'package:talkys/screen/parent_home.dart';
+import 'package:talkys/screen/speak_training.dart';
+import 'package:talkys/screen/speech_to_text.dart';
 import 'package:talkys/screen/welcome.dart';
 import 'package:talkys/service/preferences_service.dart';
 
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
           page: () {
             return MainMenuPage();
           },
-        ),GetPage(
+        ),
+        GetPage(
           name: "/welcome",
           page: () {
             return WelcomePage();
@@ -45,15 +47,21 @@ class MyApp extends StatelessWidget {
           },
         ),
         GetPage(
-          name: "/parent/home",
-          page: () {
-            return ParentHomePage();
-          },
-        ),
-        GetPage(
           name: "/app-guide",
           page: () {
             return AppGuidePage();
+          },
+        ),
+        GetPage(
+          name: "/speaking-training",
+          page: () {
+            return SpeakTrainingPage();
+          },
+        ),
+        GetPage(
+          name: "/speech-to-text",
+          page: () {
+            return SpeechToText();
           },
         ),
       ],
