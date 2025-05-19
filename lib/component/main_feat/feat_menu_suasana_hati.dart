@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class FeatMenuSuasanaHatiComponent extends StatefulWidget {
   const FeatMenuSuasanaHatiComponent({super.key});
@@ -11,7 +12,7 @@ class FeatMenuSuasanaHatiComponent extends StatefulWidget {
 
 class _FeatMenuSuasanaHatiComponent extends State<FeatMenuSuasanaHatiComponent> {
   final FlutterTts flutterTts = FlutterTts();
-  final TextEditingController _textController = TextEditingController();
+  final AudioPlayer _audioPlayer = AudioPlayer();
   bool isSpeaking = false;
 
   @override
@@ -53,14 +54,14 @@ class _FeatMenuSuasanaHatiComponent extends State<FeatMenuSuasanaHatiComponent> 
     }
   }
 
-  // Future<void> _stop() async {
-  //   await flutterTts.stop();
-  // }
+  void _playSound(String fileName) async {
+    await _audioPlayer.play(AssetSource(fileName));
+  }
 
   @override
   void dispose() {
     flutterTts.stop();
-    _textController.dispose();
+    _audioPlayer.stop();
     super.dispose();
   }
 
@@ -76,12 +77,12 @@ class _FeatMenuSuasanaHatiComponent extends State<FeatMenuSuasanaHatiComponent> 
               crossAxisSpacing: 12.0,
               mainAxisSpacing: 12.0,
               children: [
-                _buildGridItem("assets/img/bahagia.gif", "BAHAGIA", "Saya merasa bahagia"),
-                _buildGridItem("assets/img/marah.gif", "MARAH", "Saya merasa marah"),
-                _buildGridItem("assets/img/sedih.gif", "SEDIH", "Saya merasa sedih"),
-                _buildGridItem("assets/img/takut.gif", "TAKUT", "Saya merasa takut"),
-                _buildGridItem("assets/img/bingung.gif", "BINGUNG", "Saya merasa bingung"),
-                _buildGridItem("assets/img/kecewa.gif", "KECEWA", "Saya merasa kecewa"),
+                _buildGridItem("assets/img/bahagia.gif", "BAHAGIA", "Saya merasa bahagia", "audio/bahagia.mp3"),
+                _buildGridItem("assets/img/marah.gif", "MARAH", "Saya merasa marah", "audio/marah.mp3"),
+                _buildGridItem("assets/img/sedih.gif", "SEDIH", "Saya merasa sedih", "audio/sedih.mp3"),
+                _buildGridItem("assets/img/takut.gif", "TAKUT", "Saya merasa takut", "audio/takut.mp3"),
+                _buildGridItem("assets/img/bingung.gif", "BINGUNG", "Saya merasa bingung", "audio/bingung.mp3"),
+                _buildGridItem("assets/img/kecewa.gif", "KECEWA", "Saya merasa kecewa", "audio/kecewa.mp3"),
               ],
             ),
           ),
@@ -90,9 +91,12 @@ class _FeatMenuSuasanaHatiComponent extends State<FeatMenuSuasanaHatiComponent> 
     );
   }
 
-  Widget _buildGridItem(String imagePath, String label, String textToSpeak) {
+  Widget _buildGridItem(String imagePath, String label, String textToSpeak, String soundFile) {
     return GestureDetector(
-      onTap: isSpeaking ? null : () => _speak(textToSpeak),
+      onTap: isSpeaking ? null : () {
+        _playSound(soundFile);
+        // _speak(textToSpeak);
+      },
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(width: 1.0),

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:talkys/component/main_feat/home_greeting.dart';
 import 'package:talkys/component/main_feat/popup_modal.dart';
@@ -29,6 +30,10 @@ class HomePage extends StatelessWidget {
                     onPressed: () {
                       Get.offAllNamed("/main-menu");
                     },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      foregroundColor: Colors.white,
+                    ),
                     child: Text("Kembali ke halaman Utama"),
                   ),
                   GestureDetector(
